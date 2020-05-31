@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Collections;
 import java.util.Vector;
 
 public class VectorProcessTest {
@@ -11,8 +12,7 @@ public class VectorProcessTest {
     private Vector vector;
 
     @BeforeMethod
-    public void PrepareData(){
-
+    public void PrepareData() {
         output = new ByteArrayOutputStream();
         vector = new Vector();
         PrintStream streamOut = new PrintStream(output);
@@ -20,7 +20,7 @@ public class VectorProcessTest {
     }
 
     @Test(testName = "RegularSample")
-    public void RegularSample(){
+    public void RegularSample() {
         vector.add(Double.valueOf(-2.457));
         vector.add(Double.valueOf(-0.521));
         vector.add(Double.valueOf(0));
@@ -31,13 +31,14 @@ public class VectorProcessTest {
         VectorProcessor vectorProcessor = new VectorProcessor();
         vectorProcessor.MultiplyEachNegativeElementByCompositionMaxAndMin(vector);
         InputOutputVector inputOutputVector = new InputOutputVector();
-        inputOutputVector.PrintSortVector(vector);
+        Collections.sort(vector);
+        inputOutputVector.PrintVector(vector);
         String result = output.toString();
         Assert.assertEquals(result, "0 1 50 260.5 1228.5 5000");
     }
 
     @Test(testName = "SameMaxElements")
-    public void SameMaxElements(){
+    public void SameMaxElements() {
         vector.add(Double.valueOf(-2.4578));
         vector.add(Double.valueOf(50));
         vector.add(Double.valueOf(0));
@@ -48,13 +49,14 @@ public class VectorProcessTest {
         VectorProcessor vectorProcessor = new VectorProcessor();
         vectorProcessor.MultiplyEachNegativeElementByCompositionMaxAndMin(vector);
         InputOutputVector inputOutputVector = new InputOutputVector();
-        inputOutputVector.PrintSortVector(vector);
+        Collections.sort(vector);
+        inputOutputVector.PrintVector(vector);
         String result = output.toString();
         Assert.assertEquals(result, "0 1 50 50 1228.9 5000");
     }
 
     @Test(testName = "SameMinElements")
-    public void SameMinElements(){
+    public void SameMinElements() {
         vector.add(Double.valueOf(-2.4578));
         vector.add(Double.valueOf(-10));
         vector.add(Double.valueOf(0));
@@ -65,13 +67,14 @@ public class VectorProcessTest {
         VectorProcessor vectorProcessor = new VectorProcessor();
         vectorProcessor.MultiplyEachNegativeElementByCompositionMaxAndMin(vector);
         InputOutputVector inputOutputVector = new InputOutputVector();
-        inputOutputVector.PrintSortVector(vector);
+        Collections.sort(vector);
+        inputOutputVector.PrintVector(vector);
         String result = output.toString();
         Assert.assertEquals(result, "0 1 5 122.89 500 500");
     }
 
     @Test(testName = "NotNegativeElements")
-    public void NotNegativeElements(){
+    public void NotNegativeElements() {
         vector.add(Double.valueOf(2.4578));
         vector.add(Double.valueOf(10));
         vector.add(Double.valueOf(0));
@@ -82,13 +85,14 @@ public class VectorProcessTest {
         VectorProcessor vectorProcessor = new VectorProcessor();
         vectorProcessor.MultiplyEachNegativeElementByCompositionMaxAndMin(vector);
         InputOutputVector inputOutputVector = new InputOutputVector();
-        inputOutputVector.PrintSortVector(vector);
+        Collections.sort(vector);
+        inputOutputVector.PrintVector(vector);
         String result = output.toString();
         Assert.assertEquals(result, "0 1 2.458 5 10 10");
     }
 
     @Test(testName = "AllSameElements")
-    public void AllSameElements(){
+    public void AllSameElements() {
         vector.add(Double.valueOf(-1));
         vector.add(Double.valueOf(-1));
         vector.add(Double.valueOf(-1));
@@ -99,7 +103,8 @@ public class VectorProcessTest {
         VectorProcessor vectorProcessor = new VectorProcessor();
         vectorProcessor.MultiplyEachNegativeElementByCompositionMaxAndMin(vector);
         InputOutputVector inputOutputVector = new InputOutputVector();
-        inputOutputVector.PrintSortVector(vector);
+        Collections.sort(vector);
+        inputOutputVector.PrintVector(vector);
         String result = output.toString();
         Assert.assertEquals(result, "-1 -1 -1 -1 -1 -1");
     }

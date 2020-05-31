@@ -1,13 +1,15 @@
+import java.util.Collections;
 import java.util.Vector;
 
 public class Main {
 
-    public static void main(){
+    public static void main() {
         Vector vector = new Vector();
         InputOutputVector inputOutputVector = new InputOutputVector();
         inputOutputVector.AddDoubleFromInputToVector(vector);
         VectorProcessor vectorProcessor = new VectorProcessor();
         vectorProcessor.MultiplyEachNegativeElementByCompositionMaxAndMin(vector);
-        inputOutputVector.PrintSortVector(vector);
+        Collections.sort(vector);
+        inputOutputVector.PrintVector(vector);
     }
 }
