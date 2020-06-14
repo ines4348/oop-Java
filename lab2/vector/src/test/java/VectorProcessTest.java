@@ -29,10 +29,10 @@ public class VectorProcessTest {
         vector.add(Double.valueOf(1));
 
         VectorProcessor vectorProcessor = new VectorProcessor();
-        vectorProcessor.MultiplyEachNegativeElementByCompositionMaxAndMin(vector);
+        vectorProcessor.multiplyEachNegativeElementByCompositionMaxAndMin(vector);
         InputOutputVector inputOutputVector = new InputOutputVector();
         Collections.sort(vector);
-        inputOutputVector.PrintVector(vector);
+        inputOutputVector.printVector(vector);
         String result = output.toString();
         Assert.assertEquals(result, "0 1 50 260.5 1228.5 5000");
     }
@@ -47,10 +47,10 @@ public class VectorProcessTest {
         vector.add(Double.valueOf(1));
 
         VectorProcessor vectorProcessor = new VectorProcessor();
-        vectorProcessor.MultiplyEachNegativeElementByCompositionMaxAndMin(vector);
+        vectorProcessor.multiplyEachNegativeElementByCompositionMaxAndMin(vector);
         InputOutputVector inputOutputVector = new InputOutputVector();
         Collections.sort(vector);
-        inputOutputVector.PrintVector(vector);
+        inputOutputVector.printVector(vector);
         String result = output.toString();
         Assert.assertEquals(result, "0 1 50 50 1228.9 5000");
     }
@@ -65,10 +65,10 @@ public class VectorProcessTest {
         vector.add(Double.valueOf(1));
 
         VectorProcessor vectorProcessor = new VectorProcessor();
-        vectorProcessor.MultiplyEachNegativeElementByCompositionMaxAndMin(vector);
+        vectorProcessor.multiplyEachNegativeElementByCompositionMaxAndMin(vector);
         InputOutputVector inputOutputVector = new InputOutputVector();
         Collections.sort(vector);
-        inputOutputVector.PrintVector(vector);
+        inputOutputVector.printVector(vector);
         String result = output.toString();
         Assert.assertEquals(result, "0 1 5 122.89 500 500");
     }
@@ -83,10 +83,10 @@ public class VectorProcessTest {
         vector.add(Double.valueOf(1));
 
         VectorProcessor vectorProcessor = new VectorProcessor();
-        vectorProcessor.MultiplyEachNegativeElementByCompositionMaxAndMin(vector);
+        vectorProcessor.multiplyEachNegativeElementByCompositionMaxAndMin(vector);
         InputOutputVector inputOutputVector = new InputOutputVector();
         Collections.sort(vector);
-        inputOutputVector.PrintVector(vector);
+        inputOutputVector.printVector(vector);
         String result = output.toString();
         Assert.assertEquals(result, "0 1 2.458 5 10 10");
     }
@@ -101,10 +101,10 @@ public class VectorProcessTest {
         vector.add(Double.valueOf(-1));
 
         VectorProcessor vectorProcessor = new VectorProcessor();
-        vectorProcessor.MultiplyEachNegativeElementByCompositionMaxAndMin(vector);
+        vectorProcessor.multiplyEachNegativeElementByCompositionMaxAndMin(vector);
         InputOutputVector inputOutputVector = new InputOutputVector();
         Collections.sort(vector);
-        inputOutputVector.PrintVector(vector);
+        inputOutputVector.printVector(vector);
         String result = output.toString();
         Assert.assertEquals(result, "-1 -1 -1 -1 -1 -1");
     }

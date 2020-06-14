@@ -3,10 +3,10 @@ import java.util.Vector;
 
 public class VectorProcessor {
 
-    public void MultiplyEachNegativeElementByCompositionMaxAndMin(Vector vector) {
-        Double result;
-        Double maxElement = (Double) Collections.max(vector);
-        Double minElement = (Double) Collections.min(vector);
+    public static void multiplyEachNegativeElementByCompositionMaxAndMin(Vector vector) {
+        double result;
+        double maxElement = (Double) Collections.max(vector);
+        double minElement = (Double) Collections.min(vector);
 
         int vectorSize = vector.size();
         for(int i=0; i < vectorSize; i++) {

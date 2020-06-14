@@ -3,7 +3,7 @@ import java.util.*;
 
 public class InputOutputVector {
 
-    public Boolean AddDoubleFromInputToVector(Vector vector) {
+    public Boolean addDoubleFromInputToVector(Vector vector) {
         try(Scanner scanner = new Scanner(System.in)) {
             while (scanner.hasNext()) {
                 try {
@@ -22,7 +22,7 @@ public class InputOutputVector {
         return true;
     }
 
-    public void PrintVector(Vector vector) {
+    public void printVector(Vector vector) {
         DecimalFormat myFormat = new DecimalFormat("#.###");
         int vectorSize = vector.size();
         for(int i=0; i < vectorSize; i++) {

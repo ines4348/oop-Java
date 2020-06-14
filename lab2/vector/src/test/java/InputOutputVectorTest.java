@@ -14,7 +14,7 @@ public class InputOutputVectorTest {
     private Vector vector;
 
     @BeforeMethod
-    public void PrepareData() {
+    public void prepareData() {
         output = new ByteArrayOutputStream();
         vector = new Vector();
         PrintStream streamOut = new PrintStream(output);
@@ -22,49 +22,49 @@ public class InputOutputVectorTest {
     }
 
     @Test(testName = "AddEmptyInput")
-    public void AddEmptyInput() {
+    public void addEmptyInput() {
         InputStream input = new ByteArrayInputStream("".getBytes());
         System.setIn(input);
 
         InputOutputVector inputOutputVector = new InputOutputVector();
-        inputOutputVector.AddDoubleFromInputToVector(vector);
+        inputOutputVector.addDoubleFromInputToVector(vector);
 
         String result = output.toString();
         Assert.assertEquals(result, "");
     }
 
     @Test(testName = "AddCharInput")
-    public void AddCharInput() {
+    public void addCharInput() {
         InputStream input = new ByteArrayInputStream("5.4 0 -1 2 3.5 dd".getBytes());
         System.setIn(input);
         InputOutputVector inputOutputVector = new InputOutputVector();
-        inputOutputVector.AddDoubleFromInputToVector(vector);
+        inputOutputVector.addDoubleFromInputToVector(vector);
 
         String result = output.toString();
         Assert.assertEquals(result, "Inputdata contains not only Number!");
     }
 
     @Test(testName = "AddIntInput")
-    public void AddIntInput() {
+    public void addIntInput() {
         InputStream input = new ByteArrayInputStream("9 1 2 3 5 ".getBytes());
         System.setIn(input);
         InputOutputVector inputOutputVector = new InputOutputVector();
-        inputOutputVector.AddDoubleFromInputToVector(vector);
+        inputOutputVector.addDoubleFromInputToVector(vector);
         Collections.sort(vector);
-        inputOutputVector.PrintVector(vector);
+        inputOutputVector.printVector(vector);
 
         String result = output.toString();
         Assert.assertEquals(result, "1 2 3 5 9");
     }
 
     @Test(testName = "AddDoubleInput")
-    public void AddDoubleInput() {
+    public void addDoubleInput() {
         InputStream input = new ByteArrayInputStream("5.89874 -4 0 1 2 3 5 ".getBytes());
         System.setIn(input);
         InputOutputVector inputOutputVector = new InputOutputVector();
-        inputOutputVector.AddDoubleFromInputToVector(vector);
+        inputOutputVector.addDoubleFromInputToVector(vector);
         Collections.sort(vector);
-        inputOutputVector.PrintVector(vector);
+        inputOutputVector.printVector(vector);
 
         String result = output.toString();
         Assert.assertEquals(result, "-4 0 1 2 3 5 5.899");
