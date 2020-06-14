@@ -1,10 +1,7 @@
 public class Main {
-
-    public static void Main() {
-        InputOutputString inputOutputString = new InputOutputString();
-        String string = inputOutputString.GetHtmlString();
-        inputOutputString.PrintDecodeHtmlString(string);
-
-                 
+    public static void main(String[] args) {
+        StringBuilder stringBuilder  = InputOutputString.getHtmlString();
+        HtmlEncodeDecode.htmlDecode(stringBuilder);
+        System.out.println(stringBuilder.toString());
     }
 }

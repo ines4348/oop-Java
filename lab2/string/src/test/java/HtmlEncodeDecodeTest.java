@@ -9,60 +9,53 @@ import java.io.PrintStream;
 
 public class HtmlEncodeDecodeTest {
     private ByteArrayOutputStream output;
-    private String string;
+    private StringBuilder stringBuilder;
 
     @BeforeMethod
-    public void PrepareData(){
-
+    public void PrepareData() {
         output = new ByteArrayOutputStream();
-        string = "";
         PrintStream streamOut = new PrintStream(output);
         System.setOut(streamOut);
     }
 
     @Test(testName = "AddEmptyInput")
-    public void AddEmptyInput(){
+    public void addEmptyInput() {
         InputStream input = new ByteArrayInputStream("".getBytes());
         System.setIn(input);
-        InputOutputString inputOutputString = new InputOutputString();
-        String string = inputOutputString.GetHtmlString();
-        inputOutputString.PrintDecodeHtmlString(string);
+        StringBuilder stringBuilder = InputOutputString.getHtmlString();
+        InputOutputString.printDecodeHtmlString(stringBuilder.toString());
         String result = output.toString();
         Assert.assertEquals(result, "");
     }
 
     @Test(testName = "OneLineString")
-    public void OneLineString(){
+    public void oneLineString() {
         InputStream input = new ByteArrayInputStream("5.4 0 -1 2 3.5 dd".getBytes());
         System.setIn(input);
-        InputOutputString inputOutputString = new InputOutputString();
-        String string = inputOutputString.GetHtmlString();
-        inputOutputString.PrintDecodeHtmlString(string);
+        StringBuilder stringBuilder = InputOutputString.getHtmlString();
+        InputOutputString.printDecodeHtmlString(stringBuilder.toString());
         String result = output.toString();
         Assert.assertEquals(result, "5.4 0 -1 2 3.5 dd");
     }
 
     @Test(testName = "SampleString")
-    public void SampleString(){
-        String string = "Cat &lt;says&gt; &quot;Meow&quot;. M&amp;M&apos;s";
-        HtmlEncodeDecode htmlEncodeDecode = new HtmlEncodeDecode();
-        String result = htmlEncodeDecode.HtmlDecode(string);
-        Assert.assertEquals(result, "Cat <says> \"Meow\". M&M's");
+    public void sampleString() {
+        stringBuilder = new StringBuilder("Cat &lt;says&gt; &quot;Meow&quot;. M&amp;M&apos;s");
+        StringBuilder result = HtmlEncodeDecode.htmlDecode(stringBuilder);
+        Assert.assertEquals(result.toString(), "Cat <says> \"Meow\". M&M's");
     }
 
     @Test(testName = "DecodeEmptyString")
-    public void DecodeEmptyString(){
-        String string = "";
-        HtmlEncodeDecode htmlEncodeDecode = new HtmlEncodeDecode();
-        String result = htmlEncodeDecode.HtmlDecode(string);
-        Assert.assertEquals(result, "");
+    public void decodeEmptyString() {
+        stringBuilder = new StringBuilder();
+        StringBuilder result = HtmlEncodeDecode.htmlDecode(stringBuilder);
+        Assert.assertEquals(result.toString(), "");
     }
 
     @Test(testName = "DecodeStringWithoutReplaceChar")
-    public void DecodeStringWithoutReplaceChar(){
-        String string = "Следующий пример читает первую строку из файла.";
-        HtmlEncodeDecode htmlEncodeDecode = new HtmlEncodeDecode();
-        String result = htmlEncodeDecode.HtmlDecode(string);
-        Assert.assertEquals(result, "Следующий пример читает первую строку из файла.");
+    public void decodeStringWithoutReplaceChar() {
+        stringBuilder = new StringBuilder("Следующий пример читает первую строку из файла.");
+        StringBuilder result = HtmlEncodeDecode.htmlDecode(stringBuilder);
+        Assert.assertEquals(result.toString(), "Следующий пример читает первую строку из файла.");
     }
 }
